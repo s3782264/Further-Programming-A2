@@ -24,6 +24,10 @@ public class DrawImage extends JFrame
 	{
 		createImage1();
 		createImage2();
+		createImage3();
+		createImage4();
+		createImage5();
+		createImage6();
 	}
 	public void getBasicImage()
 	{
@@ -51,14 +55,83 @@ public class DrawImage extends JFrame
 	{
 		getBasicImage();
 
-		g.setColor(Color.black);
-		g.fillOval(25, 25, 60, 60);
+		g.fillOval(20, 20, 60, 60);
 		
-		g.setColor(Color.black);
 		g.fillOval(120, 120, 60, 60);
 
 
 		File file = new File("image2.png");
+		ImageIO.write(bufferedImage, "png", file);
+	}
+	
+	public void createImage3() throws IOException
+	{
+		getBasicImage();
+		
+		g.fillOval(20, 20, 60, 60);
+		
+		g.fillOval(120, 120, 60, 60);
+		
+		g.fillOval(70, 70, 60, 60);
+		
+		File file = new File("image3.png");
+		ImageIO.write(bufferedImage, "png", file);
+	}
+	
+	public void createImage4() throws IOException
+	{
+		getBasicImage();
+		
+		g.fillOval(15, 15, 60, 60);
+		
+		g.fillOval(15, 125, 60, 60);
+		
+		g.fillOval(125, 15, 60, 60);
+		
+		g.fillOval(125, 125, 60, 60);
+
+		File file = new File("image4.png");
+		ImageIO.write(bufferedImage, "png", file);
+	}
+	
+	public void createImage5() throws IOException
+	{
+		getBasicImage();
+
+		g.fillOval(70, 70, 60, 60);
+		
+		g.fillOval(15, 15, 60, 60);
+
+		g.fillOval(15, 15, 60, 60);
+
+		g.fillOval(15, 125, 60, 60);
+
+		g.fillOval(125, 15, 60, 60);
+
+		g.fillOval(125, 125, 60, 60);
+
+		File file = new File("image5.png");
+		ImageIO.write(bufferedImage, "png", file);
+	}
+	
+	public void createImage6() throws IOException
+	{
+		getBasicImage();
+		
+		g.fillOval(15, 7, 60, 60);
+		
+		g.fillOval(15, 133, 60, 60);
+			
+		g.fillOval(125, 7, 60, 60);
+		
+		g.fillOval(125, 133, 60, 60);
+		
+		g.fillOval(15, 70, 60, 60);
+		
+		g.fillOval(125, 70, 60, 60);
+		
+		
+		File file = new File("image6.png");
 		ImageIO.write(bufferedImage, "png", file);
 	}
 }
