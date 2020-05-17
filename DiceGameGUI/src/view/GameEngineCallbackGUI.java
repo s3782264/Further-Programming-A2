@@ -1,12 +1,12 @@
 package view;
 
-import model.DiceModel;
+import model.DicePairModel;
 import model.GameEngineImpl;
 
 public class GameEngineCallbackGUI 
 {
 	public GameEngineCallbackGUI()
 	{
-		new DiceFrame(new DiceModel(new GameEngineImpl()));
+		new DiceFrame(new DicePairModel(new GameEngineImpl()));
 	}
 }

@@ -3,15 +3,15 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.DiceModel;
+import model.DicePairModel;
 import model.SimplePlayer;
 import view.RemovePlayerPanel;
 
 public class RemovePlayerListener implements ActionListener
 {
-	private DiceModel model;
+	private DicePairModel model;
 	
-	public RemovePlayerListener(DiceModel model)
+	public RemovePlayerListener(DicePairModel model)
 	{
 		this.model = model;
 	}

@@ -6,14 +6,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import model.DiceModel;
+import model.DicePairModel;
 
 @SuppressWarnings("serial")
 public class RemovePlayerPanel extends JPanel 
 {
 	private JTextField textField1; 
 
-	public RemovePlayerPanel(DiceModel model, DiceFrame frame)
+	public RemovePlayerPanel(DicePairModel model, DiceFrame frame)
 	{
 		setLayout(new GridBagLayout());
 

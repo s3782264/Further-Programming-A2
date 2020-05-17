@@ -2,15 +2,15 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import model.DiceModel;
+import model.DicePairModel;
 import model.SimplePlayer;
 import view.AddPlayerPanel;
 
 public class AddPlayerListener implements ActionListener
 {
-	private DiceModel model;
+	private DicePairModel model;
 	
-	public AddPlayerListener(DiceModel model) throws IllegalArgumentException 
+	public AddPlayerListener(DicePairModel model) throws IllegalArgumentException 
 	{		
 		this.model = model;
 	}

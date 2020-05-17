@@ -1,9 +1,9 @@
 package model;
 
-public class DiceModel 
+public class DicePairModel 
 {
 	private GameEngineImpl gameEngine;
-	public DiceModel(GameEngineImpl g)
+	public DicePairModel(GameEngineImpl g)
 	{
 		this.gameEngine = g;
 	}

@@ -8,10 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
-import javax.swing.plaf.ToolBarUI;
 
-import control.AddPlayerListener;
-import model.DiceModel;
+import model.DicePairModel;
 import model.SimplePlayer;
 
 @SuppressWarnings("serial")
@@ -22,7 +20,7 @@ public class AddPlayerPanel extends JPanel
 	private JTextField textField1, textField2, textField3; 
 	private AbstractButton b;
 	
-	public AddPlayerPanel(DiceModel model, DiceFrame frame)
+	public AddPlayerPanel(DicePairModel model, DiceFrame frame)
 	{	
 
 		setLayout(new GridBagLayout());
@@ -55,7 +53,7 @@ public class AddPlayerPanel extends JPanel
 	    });
 	}
 	
-	private void enterAction(DiceModel model, AbstractButton b)
+	private void enterAction(DicePairModel model, AbstractButton b)
 	{
 		this.id = textField1.getText();
 		this.name = textField2.getText();

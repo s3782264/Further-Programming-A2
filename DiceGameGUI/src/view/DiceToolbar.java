@@ -6,12 +6,12 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
 import control.RemovePlayerListener;
-import model.DiceModel;
+import model.DicePairModel;
 
 @SuppressWarnings("serial")
 public class DiceToolbar extends JToolBar
 {	
-	public DiceToolbar(DiceModel model, DiceFrame frame)
+	public DiceToolbar(DicePairModel model, DiceFrame frame)
 	{
 		ButtonGroup group = new ButtonGroup();
 
