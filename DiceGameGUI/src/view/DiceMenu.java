@@ -13,6 +13,7 @@ import model.DicePairModel;
 @SuppressWarnings("serial")
 public class DiceMenu extends JMenuBar implements PropertyChangeListener
 {	
+	private JMenuItem addPlayer, removePlayer;
 	public DiceMenu(DicePairModel model, DiceFrame frame)
 	{
 		super();
@@ -36,9 +37,10 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 		file.add(exit);
 		add(file);
 		
+		//Player Menu
 		JMenu player = new JMenu("Player Menu");
 		player.setMnemonic(KeyEvent.VK_S);
-		JMenuItem addPlayer = new JMenuItem("Add Player");
+		addPlayer = new JMenuItem("Add Player");
 		addPlayer.setMnemonic(KeyEvent.VK_E);
 		AddPlayerPanel ap = new AddPlayerPanel(model, frame);
 		player.add(addPlayer);
@@ -49,15 +51,15 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 	    });
 		
 		player.setMnemonic(KeyEvent.VK_S);
-		JMenuItem removePlayer = new JMenuItem("Remove Player");
-		addPlayer.setMnemonic(KeyEvent.VK_E);
+		removePlayer = new JMenuItem("Remove Player");
+		removePlayer.setMnemonic(KeyEvent.VK_E);
 		RemovePlayerPanel rp = new RemovePlayerPanel(model, frame);
 		player.add(removePlayer);
 		removePlayer.addActionListener((e) -> {
 	        frame.setContentPane(rp);
 	        frame.invalidate();
 	        frame.validate();
-	    });
+		});
 		add(player);
 	}
 	

@@ -15,6 +15,6 @@ public class DiceDefaultPanel extends JPanel
 		
 		add(new JLabel("Welcome to Dice Game!"), BorderLayout.NORTH);
 		
-		add(new JIcon)
+		//aadd(new JIcon)
 	}
 }

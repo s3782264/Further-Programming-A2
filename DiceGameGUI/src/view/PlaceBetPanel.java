@@ -1,7 +1,7 @@
 package view;
 
+import java.awt.Frame;
 import java.awt.GridBagLayout;
-import java.awt.TextField;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
@@ -14,16 +14,16 @@ import model.DicePairModel;
 import model.interfaces.Player;
 
 @SuppressWarnings("serial")
-public class RemovePlayerPanel extends JPanel 
+public class PlaceBetPanel extends JPanel 
 {
 	private JTextField textField1; 
 	private AbstractButton b;
 
-	public RemovePlayerPanel(DicePairModel model, DiceFrame frame)
+	public PlaceBetPanel(DicePairModel model, DiceFrame frame, Player player)
 	{
 		setLayout(new GridBagLayout());
-
-		JLabel l = new JLabel("Enter the ID of the Player you wish to remove", JLabel.HORIZONTAL);
+		
+		JLabel l = new JLabel("Enter the bet", JLabel.HORIZONTAL);
 		add(l);
 		textField1 = new JTextField("",20);
 		l.setLabelFor(textField1);
@@ -34,14 +34,14 @@ public class RemovePlayerPanel extends JPanel
 		add(b);
 		group.add(b);
 		b.addActionListener((e) -> {
-	        enterAction(model, b);
+	        enterAction(model, b, player);
 	    });
 	}
 	
-	private void enterAction(DicePairModel model, AbstractButton b)
+	private void enterAction(DicePairModel model, AbstractButton b, Player player)
 	{
-		Player p = model.getPlayer(textField1.getText());
-		model.removePlayer(p);
-		b.setEnabled(false);
+		int bet = Integer.parseInt(textField1.getText());
+		model.placeBet(player, bet);
+		System.out.println(player.toString());
 	}
 }

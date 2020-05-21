@@ -11,6 +11,7 @@ import javax.swing.JToggleButton;
 
 import model.DicePairModel;
 import model.SimplePlayer;
+import model.interfaces.Player;
 
 @SuppressWarnings("serial")
 public class AddPlayerPanel extends JPanel
@@ -24,6 +25,7 @@ public class AddPlayerPanel extends JPanel
 	{	
 
 		setLayout(new GridBagLayout());
+
 
 		JLabel l = new JLabel("Player ID:", JLabel.HORIZONTAL);
 		add(l);
@@ -43,22 +45,26 @@ public class AddPlayerPanel extends JPanel
 		p.setLabelFor(textField3);
 		add(textField3);
 
-		
+
 		ButtonGroup group = new ButtonGroup();
 		b = new JToggleButton("Submit Player");
 		add(b);
 		group.add(b);
 		b.addActionListener((e) -> {
-	        enterAction(model, b);
-	    });
+			Player player = enterAction(model, b);
+			model.addNewPlayer(player);
+			frame.setContentPane(new PlaceBetPanel(model, frame, player));
+			frame.invalidate();
+			frame.validate();
+		});
+
 	}
 	
-	private void enterAction(DicePairModel model, AbstractButton b)
+	private Player enterAction(DicePairModel model, AbstractButton b)
 	{
 		this.id = textField1.getText();
 		this.name = textField2.getText();
 		this.points = Integer.parseInt(textField3.getText());
-		model.addNewPlayer(new SimplePlayer(id, name, points));
-		b.setEnabled(false);
+		return new SimplePlayer(id, name, points);
 	}
 }
