@@ -13,7 +13,7 @@ import model.DicePairModel;
 @SuppressWarnings("serial")
 public class DiceMenu extends JMenuBar implements PropertyChangeListener
 {	
-	private JMenuItem addPlayer, removePlayer;
+	private JMenuItem addPlayer, removePlayer, home, exit, roll;
 	public DiceMenu(DicePairModel model, DiceFrame frame)
 	{
 		super();
@@ -21,7 +21,7 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 		//File menu
 		JMenu file = new JMenu("File");
 		file.setMnemonic(KeyEvent.VK_F);
-		JMenuItem home = new JMenuItem("Home");
+		home = new JMenuItem("Home");
 		home.setMnemonic(KeyEvent.VK_E);
 		home.addActionListener(e -> {
 			frame.setContentPane(new DiceDefaultPanel());
@@ -31,7 +31,7 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 		file.add(home);
 		add(file);
 		
-		JMenuItem exit = new JMenuItem("Exit");
+		exit = new JMenuItem("Exit");
 		exit.setMnemonic(KeyEvent.VK_E);
 		exit.addActionListener(e -> {System.exit(0);});
 		file.add(exit);
@@ -61,6 +61,19 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 	        frame.validate();
 		});
 		add(player);
+		
+		JMenu game = new JMenu("Dice game");
+		game.setMnemonic(KeyEvent.VK_S);
+		roll = new JMenuItem("Roll");
+		roll.setMnemonic(KeyEvent.VK_E);
+		DiceGamePanel dp = new DiceGamePanel(model, frame);
+		game.add(roll);
+		roll.addActionListener((e) -> {
+	        frame.setContentPane(dp);
+	        frame.invalidate();
+	        frame.validate();
+	        });
+		add(game);
 	}
 	
 	@Override

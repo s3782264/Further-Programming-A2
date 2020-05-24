@@ -7,12 +7,14 @@ import model.interfaces.Player;
 public class DicePairModel 
 {
 	private GameEngineImpl gameEngine;
+	private DiceFace face;
+	
 	public DicePairModel(GameEngineImpl g)
 	{
 		this.gameEngine = g;
 	}
 	
-	public void addNewPlayer(Player player)
+	public void addNewPlayer(Player player) 
 	{
 		gameEngine.addPlayer(player);
 		System.out.println("Player added: " + player.toString());
@@ -37,5 +39,10 @@ public class DicePairModel
 	public boolean placeBet(Player player, int bet)
 	{
 		return gameEngine.placeBet(player, bet);
+	}
+	
+	public DiceFace getDiceFace()
+	{
+		return face;
 	}
 }
