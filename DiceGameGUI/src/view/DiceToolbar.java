@@ -5,7 +5,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
-import control.RemovePlayerListener;
 import model.DicePairModel;
 
 @SuppressWarnings("serial")

@@ -8,9 +8,9 @@ public enum DiceFace
 	ONE("one", "image1.png"),
     TWO("two", "image2.png"),
     THREE("three", "image3.png"),
-    FOUR("4", "image4.png"),
-    FIVE("5", "image5.png"),
-    SIX("6", "images6.png");
+    FOUR("four", "image4.png"),
+    FIVE("five", "image5.png"),
+    SIX("six", "image6.png");
 
     private String faceValue;
     private ImageIcon icon;
@@ -49,10 +49,5 @@ public enum DiceFace
 			return 6;
 		}
 		return 0;
-	}
-	
-	public static DiceFace getRandom()
-	{
-		return values()[(int)(Math.random() * values().length)];
 	}
 }

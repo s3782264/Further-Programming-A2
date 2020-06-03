@@ -2,6 +2,10 @@ package client;
 
 import javax.swing.SwingUtilities;
 
+import model.DicePairModel;
+import model.GameEngineImpl;
+import model.interfaces.GameEngine;
+import view.DiceFrame;
 import view.GameEngineCallbackGUI;
 
 public class DiceClient {
@@ -13,7 +17,9 @@ public class DiceClient {
 			@Override
 			public void run()
 			{
-				new GameEngineCallbackGUI();
+				GameEngine gameEngine = new GameEngineImpl();
+				gameEngine.addGameEngineCallback(new GameEngineCallbackGUI());
+				new DiceFrame(new DicePairModel(gameEngine));
 			}
 		});
 	}

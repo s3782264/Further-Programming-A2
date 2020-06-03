@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -7,8 +8,10 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import model.DicePairModel;
+import model.SimplePlayer;
 
 @SuppressWarnings("serial")
 public class DiceMenu extends JMenuBar implements PropertyChangeListener
@@ -66,13 +69,23 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 		game.setMnemonic(KeyEvent.VK_S);
 		roll = new JMenuItem("Roll");
 		roll.setMnemonic(KeyEvent.VK_E);
-		DiceGamePanel dp = new DiceGamePanel(model, frame);
 		game.add(roll);
+		model.addNewPlayer(new SimplePlayer("1", "ang", 1000));
+		model.addNewPlayer(new SimplePlayer("12", "sam", 1000));
+
 		roll.addActionListener((e) -> {
-	        frame.setContentPane(dp);
-	        frame.invalidate();
-	        frame.validate();
-	        });
+			if(!model.getAllPlayers().isEmpty())
+			{ 
+				DiceGamePanel dp = new DiceGamePanel(model, frame);
+				frame.setContentPane(dp);
+				frame.invalidate();
+				frame.validate();
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(frame, "There are no players in the game");
+			}
+		});
 		add(game);
 	}
 	

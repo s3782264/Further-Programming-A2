@@ -21,9 +21,6 @@ public class DiceFrame extends JFrame
 		
 		setJMenuBar(new DiceMenu(model, this));
 		
-		//add(new DiceToolbar(model, this), BorderLayout.NORTH);
-		
-		
 		setSize(1000, 500);
 		
 		setVisible(true);
