@@ -51,7 +51,7 @@ public class PlaceBetPanel extends JPanel
 					{
 						if(player.getBet() < player.getPoints())
 						{
-							frame.setContentPane(new DiceDefaultPanel());
+							frame.setContentPane(new DiceDefaultPanel(model, frame));
 							frame.invalidate();
 							frame.validate();
 							JOptionPane.showMessageDialog(frame, "Bet successfully added");

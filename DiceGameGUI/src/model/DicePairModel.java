@@ -60,6 +60,7 @@ public class DicePairModel implements Iterable<DieModel>
 	public void setSelectedPlayer(Player player)
 	{
 		this.rollingPlayer = player;
+		
 		System.out.println("You selected player " + player.getPlayerName());
 	}
 	

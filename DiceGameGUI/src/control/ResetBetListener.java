@@ -27,7 +27,7 @@ public class ResetBetListener implements ActionListener
 		if(player != null)
 		{
 			player.resetBet();
-			frame.setContentPane(new DiceDefaultPanel());
+			frame.setContentPane(new DiceDefaultPanel(model, frame));
 			frame.invalidate();
 			frame.validate();
 			JOptionPane.showMessageDialog(frame, "Bet successfully reset");

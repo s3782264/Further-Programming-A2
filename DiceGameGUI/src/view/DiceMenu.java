@@ -34,7 +34,7 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 		file.setMnemonic(KeyEvent.VK_F);
 		home = new JMenuItem("Home");
 		home.setMnemonic(KeyEvent.VK_E);
-		home.addActionListener(new HomePanelListener(frame));
+		home.addActionListener(new HomePanelListener(model, frame));
 		file.add(home);
 		add(file);
 

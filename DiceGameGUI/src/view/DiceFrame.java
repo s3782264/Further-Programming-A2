@@ -17,11 +17,12 @@ public class DiceFrame extends JFrame
 		 
 		setLayout(new BorderLayout());
 		
-		setContentPane(new DiceDefaultPanel());
+		setContentPane(new DiceDefaultPanel(model, this));
 		
 		setJMenuBar(new DiceMenu(model, this));
 		
 		setSize(1000, 500);
+		this.add(new DiceStatus(model, this), BorderLayout.SOUTH);
 		
 		setVisible(true);
 	}

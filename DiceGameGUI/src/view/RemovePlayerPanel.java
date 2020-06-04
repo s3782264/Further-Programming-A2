@@ -43,7 +43,7 @@ public class RemovePlayerPanel extends JPanel
 				 enterAction(model);
 			        if(model.getPlayer(textField1.getText()) == null)
 			        {
-			        	frame.setContentPane(new DiceDefaultPanel());
+			        	frame.setContentPane(new DiceDefaultPanel(model, frame));
 			        	frame.invalidate();
 			        	frame.validate();
 			        	JOptionPane.showMessageDialog(frame, "Player sucessfully removed");

@@ -62,7 +62,7 @@ public class AddPlayerPanel extends JPanel implements PropertyChangeListener
 				if(player!=null)
 				{
 					model.addNewPlayer(player);
-					frame.setContentPane(new DiceDefaultPanel());
+					frame.setContentPane(new DiceDefaultPanel(model, frame));
 					frame.invalidate();
 					frame.validate();
 					JOptionPane.showMessageDialog(frame, "Player successfully added.");
