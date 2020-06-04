@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -52,16 +54,22 @@ public class AddPlayerPanel extends JPanel implements PropertyChangeListener
 		ButtonGroup group = new ButtonGroup();
 		add(b);
 		group.add(b);
-		b.addActionListener((e) -> {
+		b.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				player = enterAction(model, b);
 				if(player!=null)
 				{
 					model.addNewPlayer(player);
-					frame.setContentPane(new PlaceBetPanel(model, frame, player));
+					frame.setContentPane(new DiceDefaultPanel());
 					frame.invalidate();
 					frame.validate();
-					new PlayerToolbar(model, frame);
+					JOptionPane.showMessageDialog(frame, "Player successfully added.");
+
 				}
+				
+			}
 		});
 	}
 	

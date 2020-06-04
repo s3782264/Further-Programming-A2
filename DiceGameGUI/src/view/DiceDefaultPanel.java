@@ -13,8 +13,7 @@ public class DiceDefaultPanel extends JPanel
 	{
 		setLayout(new BorderLayout());
 		
-		add(new JLabel("Welcome to Dice Game!"), BorderLayout.NORTH);
+		add(new JLabel("Welcome to Dice Game!"), BorderLayout.CENTER);
 		
-		//aadd(new JIcon)
 	}
 }

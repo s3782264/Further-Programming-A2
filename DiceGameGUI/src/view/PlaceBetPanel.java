@@ -1,10 +1,11 @@
 package view;
 
-import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,33 +22,55 @@ public class PlaceBetPanel extends JPanel
 	private AbstractButton b;
 	private DiceFrame frame;
 	
-	public PlaceBetPanel(DicePairModel model, DiceFrame frame, Player player)
+	public PlaceBetPanel(DicePairModel model, DiceFrame frame)
 	{
-		setLayout(new GridBagLayout());
+		setLayout(new BorderLayout(20,200));
 		this.frame = frame;
-		JLabel l = new JLabel("Enter the bet", JLabel.HORIZONTAL);
-		add(l);
+		
+		add(new PlayerToolbar(model, frame), BorderLayout.NORTH);
+		
+		JLabel l = new JLabel("Enter the bet");
+		add(l, BorderLayout.WEST);
 		textField1 = new JTextField("",20);
 		l.setLabelFor(textField1);
-		add(textField1);
+		add(textField1, BorderLayout.CENTER);
 		
 		ButtonGroup group = new ButtonGroup();
 		b = new JToggleButton("Submit Player");
-		add(b);
+		add(b, BorderLayout.EAST);
 		group.add(b);
-		b.addActionListener((e) -> {
-	        enterAction(model, b, player);
-	        if(player.getBet()>0)
-	        {
-	        	frame.setContentPane(new DiceDefaultPanel());
-	        	frame.invalidate();
-	        	frame.validate();
-	        	JOptionPane.showMessageDialog(frame, "Player successfully added");
-	        }
-	    });
+		b.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Player player = model.getSelectedPlayer();
+				if(player !=null)
+				{
+					enterAction(model, player);
+					if(player.getBet()>0 )
+					{
+						if(player.getBet() < player.getPoints())
+						{
+							frame.setContentPane(new DiceDefaultPanel());
+							frame.invalidate();
+							frame.validate();
+							JOptionPane.showMessageDialog(frame, "Bet successfully added");
+						}
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(frame, "Bet must be less than player points");
+					}
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(frame, "Please select a player");
+				}
+			}
+		});
 	}
-	
-	private void enterAction(DicePairModel model, AbstractButton b, Player player)
+
+	private void enterAction(DicePairModel model, Player player)
 	{
 		try {
 		int bet = Integer.parseInt(textField1.getText());

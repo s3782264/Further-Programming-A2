@@ -1,7 +1,8 @@
 package view;
 
 import java.awt.GridBagLayout;
-import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
@@ -35,19 +36,24 @@ public class RemovePlayerPanel extends JPanel
 		b = new JToggleButton("Submit Player");
 		add(b);
 		group.add(b);
-		b.addActionListener((e) -> {
-	        enterAction(model, b);
-	        if(model.getPlayer(textField1.getText()) == null)
-	        {
-	        	frame.setContentPane(new DiceDefaultPanel());
-	        	frame.invalidate();
-	        	frame.validate();
-	        	JOptionPane.showMessageDialog(frame, "Player sucessfully removed");
-	        }
+		b.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 enterAction(model);
+			        if(model.getPlayer(textField1.getText()) == null)
+			        {
+			        	frame.setContentPane(new DiceDefaultPanel());
+			        	frame.invalidate();
+			        	frame.validate();
+			        	JOptionPane.showMessageDialog(frame, "Player sucessfully removed");
+			        }
+				
+			}
 	    });
 	}
 	
-	private void enterAction(DicePairModel model, AbstractButton b)
+	private void enterAction(DicePairModel model)
 	{
 		try {
 		Player p = model.getPlayer(textField1.getText());

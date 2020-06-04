@@ -28,10 +28,9 @@ public class PlayerToolbar extends JToolBar
 			b.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					model.setRollingPlayer(player);
+					model.setSelectedPlayer(player);
 				}
-			}
-					);
+			});
 		}
 	}
 }

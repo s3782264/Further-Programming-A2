@@ -57,7 +57,7 @@ public class DicePairModel implements Iterable<DieModel>
 		return gameEngine.placeBet(player, bet);
 	}
 	
-	public void setRollingPlayer(Player player)
+	public void setSelectedPlayer(Player player)
 	{
 		this.rollingPlayer = player;
 		System.out.println("You selected player " + player.getPlayerName());
