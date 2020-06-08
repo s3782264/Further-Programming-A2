@@ -22,6 +22,7 @@ public class HomePanelListener implements ActionListener
 		frame.setContentPane(new DiceDefaultPanel(model, frame));
 		frame.invalidate();
 		frame.validate();
+		System.out.println("You've been redirected to the home page.");
 	}
 	
 }

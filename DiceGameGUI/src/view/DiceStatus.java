@@ -20,7 +20,7 @@ public class DiceStatus extends JPanel implements PropertyChangeListener
 	private JLabel status1, status2, status3;
 	public DiceStatus(DicePairModel model, DiceFrame frame)
 	{
-setLayout(new GridLayout(1, 0));
+		setLayout(new GridLayout(1, 0));
 		
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
 		
@@ -29,7 +29,7 @@ setLayout(new GridLayout(1, 0));
 		status2 = new JLabel("No. of players: " + String.valueOf(model.getAllPlayers().size()), SwingConstants.CENTER);
 		if(model.getSelectedPlayer()!=null)
 		{
-			status3 = new JLabel("Player selected " + model.getSelectedPlayer().getPlayerName());
+			status3 = new JLabel("Player selected " + model.getSelectedPlayer().getPlayerName(), SwingConstants.RIGHT);
 		}
 		else{
 			status3 = new JLabel("No player currently selected", SwingConstants.RIGHT);
@@ -45,7 +45,12 @@ setLayout(new GridLayout(1, 0));
 	
 	public void changeStatus3(Player player)
 	{
-		status3 = new JLabel("Player selected " + player.getPlayerName());
+		status3.setText("Player selected " + player.getPlayerName());
+	}
+	
+	public void changeStatus2(int size)
+	{
+		status2.setText("No. of players: " + size);
 	}
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {

@@ -23,5 +23,6 @@ public class AddPlayerPanelListener implements ActionListener
 		frame.setContentPane(ap);
 		frame.invalidate();
 		frame.validate();
+		System.out.println("Enter the details of the player you wish to add.");
 	}
 }

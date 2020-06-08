@@ -28,6 +28,7 @@ public class RemovePlayerPanelListener implements ActionListener
 			frame.setContentPane(rp);
 			frame.invalidate();
 			frame.validate();
+			System.out.println("Enter the ID of the player you wish to remove");
 		}
 		else
 		{

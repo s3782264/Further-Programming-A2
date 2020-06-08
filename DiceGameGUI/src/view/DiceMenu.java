@@ -1,17 +1,11 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-
 import control.AddPlayerPanelListener;
 import control.DiceGamePanelListener;
 import control.HomePanelListener;
@@ -22,10 +16,10 @@ import model.DicePairModel;
 import model.SimplePlayer;
 
 @SuppressWarnings("serial")
-public class DiceMenu extends JMenuBar implements PropertyChangeListener
+public class DiceMenu extends JMenuBar
 {	
 	private JMenuItem addPlayer, removePlayer, home, exit, roll, placeBet, removeBet;
-	public DiceMenu(DicePairModel model, DiceFrame frame)
+	public DiceMenu(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
 		super();
 
@@ -50,13 +44,14 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 		add(file);
 
 		//Player Menu
-		
-		model.addNewPlayer(new SimplePlayer("1", "ang", 5000));
+		model.addNewPlayer(new SimplePlayer("1", "Angela", 5000));
+		model.addNewPlayer(new SimplePlayer("2", "Sam", 5000));
+
 		JMenu player = new JMenu("Player Menu");
 		player.setMnemonic(KeyEvent.VK_S);
 		addPlayer = new JMenuItem("Add Player");
 		addPlayer.setMnemonic(KeyEvent.VK_E);
-		AddPlayerPanel ap = new AddPlayerPanel(model, frame);
+		AddPlayerPanel ap = new AddPlayerPanel(model, frame, statusBar);
 		player.add(addPlayer);
 		addPlayer.addActionListener(new AddPlayerPanelListener(model, frame, ap));
 
@@ -70,13 +65,13 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 		placeBet = new JMenuItem("Place Bet");
 		placeBet.setMnemonic(KeyEvent.VK_E);
 		player.add(placeBet);
-		placeBet.addActionListener(new PlaceBetPanelListener(model, frame));
+		placeBet.addActionListener(new PlaceBetPanelListener(model, frame, statusBar));
 		add(player);
 		
 		removeBet = new JMenuItem("Remove/Reset Bet");
 		removeBet.setMnemonic(KeyEvent.VK_E);
 		player.add(removeBet);
-		removeBet.addActionListener(new ResetBetPanelListener(model, frame));
+		removeBet.addActionListener(new ResetBetPanelListener(model, frame, statusBar));
 
 		//Dice Game Menu
 		JMenu game = new JMenu("Dice game");
@@ -85,15 +80,7 @@ public class DiceMenu extends JMenuBar implements PropertyChangeListener
 		roll.setMnemonic(KeyEvent.VK_E);
 		game.add(roll);
 		
-		roll.addActionListener(new DiceGamePanelListener(model, frame));
+		roll.addActionListener(new DiceGamePanelListener(model, frame, statusBar));
 		add(game);
 	}
-
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) 
-	{
-		// TODO Auto-generated method stub
-
-	}
-
 }

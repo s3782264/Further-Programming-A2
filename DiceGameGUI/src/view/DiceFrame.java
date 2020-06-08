@@ -9,6 +9,7 @@ import model.DicePairModel;
 @SuppressWarnings("serial")
 public class DiceFrame extends JFrame
 {
+	private DiceStatus statusBar;
 	public DiceFrame(DicePairModel model)
 	{
 		super("Dice Game Assignment");
@@ -17,13 +18,17 @@ public class DiceFrame extends JFrame
 		 
 		setLayout(new BorderLayout());
 		
+		statusBar = new DiceStatus(model, this);
+
 		setContentPane(new DiceDefaultPanel(model, this));
 		
-		setJMenuBar(new DiceMenu(model, this));
+		setJMenuBar(new DiceMenu(model, this, statusBar));
 		
 		setSize(1000, 500);
-		this.add(new DiceStatus(model, this), BorderLayout.SOUTH);
+		
+		this.add(statusBar, BorderLayout.SOUTH);
 		
 		setVisible(true);
 	}
+
 }

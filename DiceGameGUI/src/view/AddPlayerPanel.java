@@ -3,9 +3,6 @@ package view;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -19,7 +16,7 @@ import model.SimplePlayer;
 import model.interfaces.Player;
 
 @SuppressWarnings("serial")
-public class AddPlayerPanel extends JPanel implements PropertyChangeListener
+public class AddPlayerPanel extends JPanel 
 {
 	private String id, name;
 	private int  points;
@@ -28,7 +25,7 @@ public class AddPlayerPanel extends JPanel implements PropertyChangeListener
 	private DiceFrame frame;
 	private Player player;
 	
-	public AddPlayerPanel(DicePairModel model, DiceFrame frame)
+	public AddPlayerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{	
 		this.frame = frame;
 		setLayout(new GridBagLayout());
@@ -62,6 +59,7 @@ public class AddPlayerPanel extends JPanel implements PropertyChangeListener
 				if(player!=null)
 				{
 					model.addNewPlayer(player);
+					statusBar.changeStatus2(model.getAllPlayers().size());
 					frame.setContentPane(new DiceDefaultPanel(model, frame));
 					frame.invalidate();
 					frame.validate();
@@ -90,14 +88,5 @@ public class AddPlayerPanel extends JPanel implements PropertyChangeListener
 			System.out.println("Points must be a number");
 		}
 		return null;
-	}
-
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		if(evt.getPropertyName() == DicePairModel.NEW_PLAYER_ADDED)
-		{
-			
-		}
-		
 	}
 }

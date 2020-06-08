@@ -1,21 +1,24 @@
 package model;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import model.interfaces.Die;
+import javax.swing.JPanel;
+
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.DiceGamePanel;
+import view.DicePanel;
 
-public class DicePairModel implements Iterable<DieModel>
+public class DicePairModel
 {
 	private GameEngine gameEngine;
-	private DiceFace face;
-	private Collection<DieModel> dieFaces;
+	private DieModel dieFace1;
+	private DieModel dieFace2;
 	private Player rollingPlayer;
-	public static final String NEW_PLAYER_ADDED = "New player added";
+	public static final String DICE_ONE = "Dice";
 	
 	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	
@@ -29,11 +32,15 @@ public class DicePairModel implements Iterable<DieModel>
 		gameEngine.rollPlayer(player, 100,1000,100,50,500,50);
 	}
 	
+	public void rollHouse()
+	{
+		gameEngine.rollHouse(100,1000,100,50,500,50);
+	}
+	
 	public void addNewPlayer(Player player) 
 	{
 		gameEngine.addPlayer(player);
 		System.out.println("Player added: " + player.toString());
-		this.pcs.firePropertyChange(NEW_PLAYER_ADDED, null, player);
 	}
 	
 	public void removePlayer(Player player)
@@ -57,11 +64,10 @@ public class DicePairModel implements Iterable<DieModel>
 		return gameEngine.placeBet(player, bet);
 	}
 	
+	
 	public void setSelectedPlayer(Player player)
 	{
 		this.rollingPlayer = player;
-		
-		System.out.println("You selected player " + player.getPlayerName());
 	}
 	
 	public Player getSelectedPlayer()
@@ -69,46 +75,32 @@ public class DicePairModel implements Iterable<DieModel>
 		return rollingPlayer;
 	}
 	
-	public DiceFace getDiceFace()
+	public void setDieModel1(DieModel die)
 	{
-		return face;
+		dieFace1 = die;
+		this.pcs.firePropertyChange(DICE_ONE, dieFace1, die);
 	}
 	
-	public void setDiceFace(Die die)
+	public void setDieModel2(DieModel die)
 	{
-		if(die.getValue() ==1)
-		{
-			face = DiceFace.values()[0];
-		}
-		else if(die.getValue() ==2)
-		{
-			face = DiceFace.values()[1];
-		}
-		else if(die.getValue() ==3)
-		{
-			face = DiceFace.values()[2];
-		}
-		else if(die.getValue() ==4)
-		{
-			face = DiceFace.values()[3];
-		}
-		else if(die.getValue() ==5)
-		{
-			face = DiceFace.values()[4];
-		}
-		else if(die.getValue() ==6)
-		{
-			face = DiceFace.values()[5];
-		}
+		dieFace2 = die;
 	}
 	
-	//public void 
-
-	@Override
-	public Iterator<DieModel> iterator() 
+	public DieModel getDie1()
 	{
-		return dieFaces.iterator();
+		return dieFace1;
 	}
 
-	
+	public DieModel getDie2()
+	{
+		return dieFace2;
+	}
+
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		this.pcs.addPropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		this.pcs.removePropertyChangeListener(listener);
+	}
 }

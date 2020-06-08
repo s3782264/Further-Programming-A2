@@ -26,7 +26,7 @@ public class DieModel implements ObservableDice
 	
 	public void updateDiceFace()
 	{
-		setFace(model.getDiceFace());
+		//setFace(model.getDiceFace());
 	}
 
 	@Override

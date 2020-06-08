@@ -15,12 +15,14 @@ public class ResetBetPanel extends JPanel
 {
 	private AbstractButton b;
 	private DiceFrame frame;
-	public ResetBetPanel(DicePairModel model, DiceFrame frame)
+	public ResetBetPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
-		setLayout(new BorderLayout(20,200));
+		setLayout(new BorderLayout(20,180));
 		this.frame = frame;
 		
-		add(new PlayerToolbar(model, frame), BorderLayout.NORTH);
+		add(new PlayerToolbar(model, frame, statusBar), BorderLayout.NORTH);
+		
+		add(statusBar, BorderLayout.SOUTH);
 		
 		JLabel l = new JLabel("Do you wish to reset the bet?");
 		add(l, BorderLayout.WEST);
@@ -28,6 +30,11 @@ public class ResetBetPanel extends JPanel
 		ButtonGroup group = new ButtonGroup();
 		b = new JToggleButton("Reset Bet");
 		add(b, BorderLayout.CENTER);
+		
+		JLabel S = new JLabel("                      "
+				+ "                          "
+				+ "                      ");
+		add(S, BorderLayout.EAST);
 		group.add(b);
 		
 		b.addActionListener(new ResetBetListener(model, frame));

@@ -16,7 +16,7 @@ public class PlayerToolbar extends JToolBar
 {
 	private ButtonGroup group;
 	
-	public PlayerToolbar(DicePairModel model, DiceFrame frame)
+	public PlayerToolbar(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
 		group = new ButtonGroup();
 		for(Player player : model.getAllPlayers())
@@ -29,6 +29,8 @@ public class PlayerToolbar extends JToolBar
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					model.setSelectedPlayer(player);
+					statusBar.changeStatus3(player);
+					System.out.println("You have selected player: " + model.getSelectedPlayer().getPlayerName());
 				}
 			});
 		}

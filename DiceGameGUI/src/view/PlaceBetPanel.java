@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.border.Border;
 
 import model.DicePairModel;
 import model.interfaces.Player;
@@ -22,12 +23,14 @@ public class PlaceBetPanel extends JPanel
 	private AbstractButton b;
 	private DiceFrame frame;
 	
-	public PlaceBetPanel(DicePairModel model, DiceFrame frame)
+	public PlaceBetPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
-		setLayout(new BorderLayout(20,200));
+		setLayout(new BorderLayout(20,180));
 		this.frame = frame;
 		
-		add(new PlayerToolbar(model, frame), BorderLayout.NORTH);
+		add(new PlayerToolbar(model, frame, statusBar), BorderLayout.NORTH);
+		
+		add(statusBar, BorderLayout.SOUTH);
 		
 		JLabel l = new JLabel("Enter the bet");
 		add(l, BorderLayout.WEST);

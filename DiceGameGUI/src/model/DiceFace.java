@@ -50,4 +50,29 @@ public enum DiceFace
 		}
 		return 0;
 	}
+	
+	/*public String getValue()
+	{
+		if(faceValue.equals(1))
+		{
+			return "one";
+		}
+		if(faceValue.equals(2))
+		{
+			return "two";
+		}if(faceValue.equals(3))
+		{
+			return "three";
+		}if(faceValue.equals(4))
+		{
+			return "four";
+		}if(faceValue.equals(5))
+		{
+			return "five";
+		}if(faceValue.equals(6))
+		{
+			return "six";
+		}
+		return "";
+	}*/
 }
