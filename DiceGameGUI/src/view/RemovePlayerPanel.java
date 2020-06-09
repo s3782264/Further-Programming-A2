@@ -21,7 +21,7 @@ public class RemovePlayerPanel extends JPanel
 	private JTextField textField1; 
 	private AbstractButton b;
 	private DiceFrame frame;
-	public RemovePlayerPanel(DicePairModel model, DiceFrame frame)
+	public RemovePlayerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
 		setLayout(new GridBagLayout());
 		this.frame = frame;
@@ -43,9 +43,9 @@ public class RemovePlayerPanel extends JPanel
 				 enterAction(model);
 			        if(model.getPlayer(textField1.getText()) == null)
 			        {
-			        	frame.setContentPane(new DiceDefaultPanel(model, frame));
-			        	frame.invalidate();
-			        	frame.validate();
+			        	frame.getSplitFrame().setTopComponent(new DiceDefaultPanel(model, frame, statusBar));
+			        	frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
+			    		frame.updatePanel();
 			        	JOptionPane.showMessageDialog(frame, "Player sucessfully removed");
 			        }
 				

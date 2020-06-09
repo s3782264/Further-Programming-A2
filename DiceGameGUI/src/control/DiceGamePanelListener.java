@@ -2,7 +2,6 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.ObjectInputFilter.Status;
 
 import javax.swing.JOptionPane;
 
@@ -22,15 +21,19 @@ public class DiceGamePanelListener implements ActionListener
 		this.frame = frame;
 		this.statusBar = statusBar;
 	}
+	
+	/*
+	 * If players exist in the game the top panel should be changed
+	 * to DiceGamePanel
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		DiceGamePanel dp = new DiceGamePanel(model, frame, statusBar);
 
 		if(!model.getAllPlayers().isEmpty())
 		{ 
-			frame.setContentPane(dp);
-			frame.invalidate();
-			frame.validate();
+			frame.getSplitFrame().setTopComponent(dp);
+			frame.updatePanel();
 		}
 		else
 		{

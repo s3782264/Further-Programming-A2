@@ -22,15 +22,18 @@ public class ResetBetPanelListener implements ActionListener
 		this.statusBar = statusBar;
 	}
 	
+	/*
+	 * If players exist within the game change the top component panel
+	 * to ResetBetPanel
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ResetBetPanel rs = new ResetBetPanel(model, frame, statusBar);
 		
 		if(!model.getAllPlayers().isEmpty())
 		{
-			frame.setContentPane(rs);
-			frame.invalidate();
-			frame.validate();
+			frame.getSplitFrame().setTopComponent(rs);
+			frame.updatePanel();
 			System.out.println("Select the player you wish to reset the bet of.");
 		}
 		else

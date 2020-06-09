@@ -11,8 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
-import javax.swing.border.Border;
-
 import model.DicePairModel;
 import model.interfaces.Player;
 
@@ -25,7 +23,7 @@ public class PlaceBetPanel extends JPanel
 	
 	public PlaceBetPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
-		setLayout(new BorderLayout(20,180));
+		setLayout(new BorderLayout(20,120));
 		this.frame = frame;
 		
 		add(new PlayerToolbar(model, frame, statusBar), BorderLayout.NORTH);
@@ -54,9 +52,9 @@ public class PlaceBetPanel extends JPanel
 					{
 						if(player.getBet() < player.getPoints())
 						{
-							frame.setContentPane(new DiceDefaultPanel(model, frame));
-							frame.invalidate();
-							frame.validate();
+							frame.getSplitFrame().setTopComponent(new DiceDefaultPanel(model, frame, statusBar));
+							frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
+							frame.updatePanel();
 							JOptionPane.showMessageDialog(frame, "Bet successfully added");
 						}
 					}
@@ -73,7 +71,7 @@ public class PlaceBetPanel extends JPanel
 		});
 	}
 
-	private void enterAction(DicePairModel model, Player player)
+	private boolean enterAction(DicePairModel model, Player player)
 	{
 		try {
 		int bet = Integer.parseInt(textField1.getText());
@@ -84,6 +82,8 @@ public class PlaceBetPanel extends JPanel
 		{
 			JOptionPane.showMessageDialog(frame, "Bet must be a number");
 			System.out.println("Bet must be a number");
+			return false;
 		}
+		return true;
 	}
 }

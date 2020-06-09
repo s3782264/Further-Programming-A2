@@ -23,15 +23,18 @@ public class PlaceBetPanelListener implements ActionListener
 		this.statusBar = statusBar;
 	}
 
+	/*
+	 * If players exist within the game change the top component 
+	 * to PlaceBetPanel
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		PlaceBetPanel pp = new PlaceBetPanel(model, frame, statusBar);
 
 		if(!model.getAllPlayers().isEmpty())
 		{
-			frame.setContentPane(pp);
-			frame.invalidate();
-			frame.validate();
+			frame.getSplitFrame().setTopComponent(pp);
+			frame.updatePanel();
 			System.out.println("Select a player and place a bet for that player.");
 		}
 		else

@@ -2,9 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,7 +12,7 @@ import model.DicePairModel;
 import model.interfaces.Player;
 
 @SuppressWarnings("serial")
-public class DiceStatus extends JPanel implements PropertyChangeListener
+public class DiceStatus extends JPanel
 {
 	private JLabel status1, status2, status3;
 	public DiceStatus(DicePairModel model, DiceFrame frame)
@@ -51,9 +48,5 @@ public class DiceStatus extends JPanel implements PropertyChangeListener
 	public void changeStatus2(int size)
 	{
 		status2.setText("No. of players: " + size);
-	}
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		
 	}
 }

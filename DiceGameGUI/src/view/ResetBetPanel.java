@@ -14,11 +14,9 @@ import model.DicePairModel;
 public class ResetBetPanel extends JPanel
 {
 	private AbstractButton b;
-	private DiceFrame frame;
 	public ResetBetPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
-		setLayout(new BorderLayout(20,180));
-		this.frame = frame;
+		setLayout(new BorderLayout(20,120));
 		
 		add(new PlayerToolbar(model, frame, statusBar), BorderLayout.NORTH);
 		
@@ -37,6 +35,6 @@ public class ResetBetPanel extends JPanel
 		add(S, BorderLayout.EAST);
 		group.add(b);
 		
-		b.addActionListener(new ResetBetListener(model, frame));
+		b.addActionListener(new ResetBetListener(model, frame, statusBar));
 	}
 }

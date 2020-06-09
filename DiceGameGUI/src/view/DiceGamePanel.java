@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import javax.swing.SwingUtilities;
 
 import model.DiceFace;
 import model.DicePairModel;
@@ -53,6 +52,7 @@ public class DiceGamePanel extends JPanel
 							
 							b.setEnabled(false);
 							model.rollPlayer(model.getSelectedPlayer());
+							frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));									
 							if(model.getAllPlayers()!=null)
 							{
 								int check =0;
@@ -77,9 +77,9 @@ public class DiceGamePanel extends JPanel
 					else
 					{
 						JOptionPane.showMessageDialog(frame, "Your player doesn't have a bet");
-						frame.setContentPane(new PlaceBetPanel(model, frame, statusBar));
-						frame.invalidate();
-						frame.validate();
+						frame.getSplitFrame().setTopComponent(new PlaceBetPanel(model, frame, statusBar));
+						frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
+						frame.updatePanel();
 					}
 				}
 				else 

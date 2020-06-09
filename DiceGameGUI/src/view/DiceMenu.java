@@ -3,17 +3,18 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
 import control.AddPlayerPanelListener;
 import control.DiceGamePanelListener;
 import control.HomePanelListener;
 import control.PlaceBetPanelListener;
-import control.ResetBetPanelListener;
 import control.RemovePlayerPanelListener;
+import control.ResetBetPanelListener;
 import model.DicePairModel;
-import model.SimplePlayer;
 
 @SuppressWarnings("serial")
 public class DiceMenu extends JMenuBar
@@ -28,7 +29,7 @@ public class DiceMenu extends JMenuBar
 		file.setMnemonic(KeyEvent.VK_F);
 		home = new JMenuItem("Home");
 		home.setMnemonic(KeyEvent.VK_E);
-		home.addActionListener(new HomePanelListener(model, frame));
+		home.addActionListener(new HomePanelListener(model, frame, statusBar));
 		file.add(home);
 		add(file);
 
@@ -44,8 +45,6 @@ public class DiceMenu extends JMenuBar
 		add(file);
 
 		//Player Menu
-		model.addNewPlayer(new SimplePlayer("1", "Angela", 5000));
-		model.addNewPlayer(new SimplePlayer("2", "Sam", 5000));
 
 		JMenu player = new JMenu("Player Menu");
 		player.setMnemonic(KeyEvent.VK_S);
@@ -57,7 +56,7 @@ public class DiceMenu extends JMenuBar
 
 		removePlayer = new JMenuItem("Remove Player");
 		removePlayer.setMnemonic(KeyEvent.VK_E);
-		RemovePlayerPanel rp = new RemovePlayerPanel(model, frame);
+		RemovePlayerPanel rp = new RemovePlayerPanel(model, frame, statusBar);
 		player.add(removePlayer);
 		removePlayer.addActionListener(new RemovePlayerPanelListener(model,frame, rp));
 		add(player);

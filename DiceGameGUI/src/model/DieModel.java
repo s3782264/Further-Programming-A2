@@ -4,13 +4,11 @@ import java.util.Collection;
 
 public class DieModel implements ObservableDice
 {
-	private DicePairModel model;
 	private DiceFace face;
 	private Collection<DiceObserver> observers;
 	
 	public DieModel(DicePairModel model, DiceFace face) 
 	{
-		this.model = model;
 		this.face = face;
 	}
 	
@@ -19,16 +17,6 @@ public class DieModel implements ObservableDice
 		return face;
 	}
 	
-	public void setFace(DiceFace face)
-	{
-		this.face = face;
-	}
-	
-	public void updateDiceFace()
-	{
-		//setFace(model.getDiceFace());
-	}
-
 	@Override
 	public void register(DiceObserver observer) 
 	{

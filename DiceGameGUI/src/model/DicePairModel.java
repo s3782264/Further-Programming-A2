@@ -3,14 +3,8 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Collection;
-import java.util.Iterator;
-
-import javax.swing.JPanel;
-
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
-import view.DiceGamePanel;
-import view.DicePanel;
 
 public class DicePairModel
 {

@@ -17,12 +17,14 @@ public class AddPlayerPanelListener implements ActionListener
 		this.ap = ap;
 	}
 	
+	/*
+	 * Changes the top panel of the frame to AddPlayerPanel
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		frame.setContentPane(ap);
-		frame.invalidate();
-		frame.validate();
+		frame.getSplitFrame().setTopComponent(ap);
+		frame.updatePanel();
 		System.out.println("Enter the details of the player you wish to add.");
 	}
 }

@@ -60,9 +60,9 @@ public class AddPlayerPanel extends JPanel
 				{
 					model.addNewPlayer(player);
 					statusBar.changeStatus2(model.getAllPlayers().size());
-					frame.setContentPane(new DiceDefaultPanel(model, frame));
-					frame.invalidate();
-					frame.validate();
+					frame.getSplitFrame().setTopComponent(new DiceDefaultPanel(model, frame, statusBar));
+					frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
+					frame.updatePanel();
 					JOptionPane.showMessageDialog(frame, "Player successfully added.");
 
 				}

@@ -1,9 +1,6 @@
 package view;
 
 
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
 import model.DiceFace;
 import model.DicePairModel;
 import model.DieModel;

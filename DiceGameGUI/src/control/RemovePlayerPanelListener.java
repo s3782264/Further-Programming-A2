@@ -20,14 +20,18 @@ public class RemovePlayerPanelListener implements ActionListener
 		this.rp = rp;
 		this.model = model;
 	}
+	
+	/*
+	 * If players exist change the top component of the frame to
+	 * RemovePlayerPanel
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{	
 		if(!model.getAllPlayers().isEmpty())
 		{
-			frame.setContentPane(rp);
-			frame.invalidate();
-			frame.validate();
+			frame.getSplitFrame().setTopComponent(rp);
+			frame.updatePanel();
 			System.out.println("Enter the ID of the player you wish to remove");
 		}
 		else
