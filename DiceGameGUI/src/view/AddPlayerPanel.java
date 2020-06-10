@@ -25,6 +25,10 @@ public class AddPlayerPanel extends JPanel
 	private DiceFrame frame;
 	private Player player;
 	
+	/*
+	 * This constructor creates 3 labels as well as 3 textfields
+	 * for the user to insert information for a player they wish to add
+	 */
 	public AddPlayerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{	
 		this.frame = frame;
@@ -51,18 +55,34 @@ public class AddPlayerPanel extends JPanel
 		ButtonGroup group = new ButtonGroup();
 		add(b);
 		group.add(b);
+		
 		b.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				/*
+				 * if a valid player is returned via enterAction method
+				 * that player is added into the gameEngine and the UI panel is changed
+				 */
 				player = enterAction(model, b);
 				if(player!=null)
 				{
 					model.addNewPlayer(player);
+					
+					/*
+					 * Updates status2 on the statusBar
+					 */
 					statusBar.changeStatus2(model.getAllPlayers().size());
+					
+					/*
+					 * Changing the frames panels once a new player has been added.
+					 */
 					frame.getSplitFrame().setTopComponent(new DiceDefaultPanel(model, frame, statusBar));
 					frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
 					frame.updatePanel();
+					/*
+					 * A dialog box that indicates to the user a new player has been added.
+					 */
 					JOptionPane.showMessageDialog(frame, "Player successfully added.");
 
 				}
@@ -71,6 +91,10 @@ public class AddPlayerPanel extends JPanel
 		});
 	}
 	
+	/*
+	 * Returns a player if the information in the textfields are valid to
+	 * create a Player object
+	 */
 	private Player enterAction(DicePairModel model, AbstractButton b)
 	{
 		try {

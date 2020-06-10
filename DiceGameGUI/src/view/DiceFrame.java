@@ -37,9 +37,18 @@ public class DiceFrame extends JFrame
 		
 		bottomPanel = new SummaryPanel(model, statusBar);
 		
+		/*
+		 * Splits the frame into two parts
+		 */
 		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-        splitPane.setDividerLocation(320);            
-        splitPane.setTopComponent(topPanel);                 
+        splitPane.setDividerLocation(320);          
+        /*
+         * topPanel is set to the "Home" panel
+         */
+        splitPane.setTopComponent(topPanel);  
+        /*
+         * The bottom panel is set to the Summary Panel
+         */
         splitPane.setBottomComponent(bottomPanel);
 		
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS)); 

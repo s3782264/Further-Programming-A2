@@ -20,6 +20,9 @@ public class DrawImage extends JFrame
  
     }
 	
+	/*
+	 * Method that draws all the images
+	 */
 	public DrawImage() throws IOException
 	{
 		createImage1();
@@ -32,12 +35,15 @@ public class DrawImage extends JFrame
 	public void getBasicImage()
 	{
 		g.setColor(Color.white);
-		g.fillRect(0, 0, 200, 200); //rec
+		g.fillRect(0, 0, 200, 200);
 		
 		g.setColor(Color.black);
 		g.drawRect(0, 0, 200, 200);
 	}
 	
+	/*
+	 * Dice 1
+	 */
 	public void createImage1() throws IOException 
 	{
 
@@ -51,6 +57,9 @@ public class DrawImage extends JFrame
 		ImageIO.write(bufferedImage, "png", file);
 	}
 	
+	/*
+	 * Dice 2
+	 */
 	public void createImage2() throws IOException
 	{
 		getBasicImage();
@@ -64,6 +73,9 @@ public class DrawImage extends JFrame
 		ImageIO.write(bufferedImage, "png", file);
 	}
 	
+	/*
+	 * Dice 3
+	 */
 	public void createImage3() throws IOException
 	{
 		getBasicImage();
@@ -78,6 +90,9 @@ public class DrawImage extends JFrame
 		ImageIO.write(bufferedImage, "png", file);
 	}
 	
+	/*
+	 * Dice 4
+	 */
 	public void createImage4() throws IOException
 	{
 		getBasicImage();
@@ -94,6 +109,9 @@ public class DrawImage extends JFrame
 		ImageIO.write(bufferedImage, "png", file);
 	}
 	
+	/*
+	 * Dice 5
+	 */
 	public void createImage5() throws IOException
 	{
 		getBasicImage();
@@ -114,6 +132,9 @@ public class DrawImage extends JFrame
 		ImageIO.write(bufferedImage, "png", file);
 	}
 	
+	/*
+	 * Dice 6
+	 */
 	public void createImage6() throws IOException
 	{
 		getBasicImage();

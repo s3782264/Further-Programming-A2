@@ -21,8 +21,10 @@ public class DiceStatus extends JPanel
 		
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
 		
+		/*
+		 * JLabels are created for the status bar
+		 */
 		status1 = new JLabel("Dice Game");
-		
 		status2 = new JLabel("No. of players: " + String.valueOf(model.getAllPlayers().size()), SwingConstants.CENTER);
 		if(model.getSelectedPlayer()!=null)
 		{
@@ -31,6 +33,9 @@ public class DiceStatus extends JPanel
 		else{
 			status3 = new JLabel("No player currently selected", SwingConstants.RIGHT);
 		}
+		/*
+		 * Border is set for the status'
+		 */
 		status3.setBorder(border);
 		status1.setBorder(border);
 		status2.setBorder(border);
@@ -40,11 +45,17 @@ public class DiceStatus extends JPanel
 		add(status3);
 	}
 	
+	/*
+	 * Updates the status3 label
+	 */
 	public void changeStatus3(Player player)
 	{
 		status3.setText("Player selected " + player.getPlayerName());
 	}
 	
+	/*
+	 * Updates the status2 label
+	 */
 	public void changeStatus2(int size)
 	{
 		status2.setText("No. of players: " + size);

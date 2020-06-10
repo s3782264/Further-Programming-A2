@@ -21,54 +21,67 @@ public class DicePairModel
 		this.gameEngine = g;
 	}
 	
+	/*/
+	 * Calls rollPlayer from gameEngine
+	 */
 	public void rollPlayer(Player player)
 	{
 		gameEngine.rollPlayer(player, 100,1000,100,50,500,50);
+		System.out.println(player.getPlayerName() + " is now rolling");
 	}
 	
+	/*
+	 * Calls rollHouse from gameEngine
+	 */
 	public void rollHouse()
 	{
 		gameEngine.rollHouse(100,1000,100,50,500,50);
+		System.out.println("The house is now rolling");
 	}
 	
+	/*/
+	 * A player is added into the gameEngine
+	 */
 	public void addNewPlayer(Player player) 
 	{
 		gameEngine.addPlayer(player);
 		System.out.println("Player added: " + player.toString());
 	}
 	
+	/*
+	 * A player is removed from the gameEngine
+	 */
 	public void removePlayer(Player player)
 	{
 		gameEngine.removePlayer(player);
 		System.out.println("Player removed: " + player.toString());
 	}
 	
-	public Collection<Player> getAllPlayers()
-	{
-		return gameEngine.getAllPlayers();
-	}
-	
-	public Player getPlayer(String id)
-	{
-		return gameEngine.getPlayer(id);
-	}
-	
+	/*
+	 * Places a bet for a specific player
+	 */
 	public boolean placeBet(Player player, int bet)
 	{
 		return gameEngine.placeBet(player, bet);
 	}
 	
-	
+	/*
+	 * Sets a player who is currently selected 
+	 */
 	public void setSelectedPlayer(Player player)
 	{
 		this.rollingPlayer = player;
 	}
 	
+	/*
+	 * Returns a player who is marked as selected
+	 */
 	public Player getSelectedPlayer()
 	{
 		return rollingPlayer;
 	}
 	
+	//Setters and getters
 	public void setDieModel1(DieModel die)
 	{
 		dieFace1 = die;
@@ -88,6 +101,16 @@ public class DicePairModel
 	public DieModel getDie2()
 	{
 		return dieFace2;
+	}
+	
+	public Collection<Player> getAllPlayers()
+	{
+		return gameEngine.getAllPlayers();
+	}
+
+	public Player getPlayer(String id)
+	{
+		return gameEngine.getPlayer(id);
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {

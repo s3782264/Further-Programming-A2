@@ -25,7 +25,9 @@ public class PlaceBetPanel extends JPanel
 	{
 		setLayout(new BorderLayout(20,120));
 		this.frame = frame;
-		
+		/*
+		 * Adds a Player toolbar to the panel
+		 */
 		add(new PlayerToolbar(model, frame, statusBar), BorderLayout.NORTH);
 		
 		add(statusBar, BorderLayout.SOUTH);
@@ -47,7 +49,10 @@ public class PlaceBetPanel extends JPanel
 				Player player = model.getSelectedPlayer();
 				if(player !=null)
 				{
-					enterAction(model, player);
+					/*
+					 * 
+					 */
+					submitAction(model, player);
 					if(player.getBet()>0 )
 					{
 						if(player.getBet() < player.getPoints())
@@ -70,8 +75,12 @@ public class PlaceBetPanel extends JPanel
 			}
 		});
 	}
-
-	private boolean enterAction(DicePairModel model, Player player)
+	
+	/*
+	 * Method that places a bet for the player passed in
+	 * if no exception was thrown it returns true
+	 */
+	private boolean submitAction(DicePairModel model, Player player)
 	{
 		try {
 		int bet = Integer.parseInt(textField1.getText());

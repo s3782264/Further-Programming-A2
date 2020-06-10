@@ -53,6 +53,9 @@ public class RemovePlayerPanel extends JPanel
 	    });
 	}
 	
+	/*
+	 * Removes a player 
+	 */
 	private void enterAction(DicePairModel model)
 	{
 		try {

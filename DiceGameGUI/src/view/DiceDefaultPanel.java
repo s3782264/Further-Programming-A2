@@ -10,6 +10,9 @@ import model.DicePairModel;
 @SuppressWarnings("serial")
 public class DiceDefaultPanel extends JPanel 
 {
+	/*
+	 * A "Home" Panel for the frame
+	 */
 	public DiceDefaultPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
 		setLayout(new BorderLayout());
