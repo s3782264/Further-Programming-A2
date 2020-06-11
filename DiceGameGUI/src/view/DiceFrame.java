@@ -28,7 +28,7 @@ public class DiceFrame extends JFrame
 		setSize(1000, 500);
 		
 		statusBar = new DiceStatus(model, this);
-		
+				
 		splitPane = new JSplitPane();
 				
 		getContentPane().add(splitPane);

@@ -16,7 +16,7 @@ import model.SimplePlayer;
 import model.interfaces.Player;
 
 @SuppressWarnings("serial")
-public class AddPlayerPanel extends JPanel 
+public class AddPlayerInnerPanel extends JPanel 
 {
 	private String id, name;
 	private int  points;
@@ -29,7 +29,7 @@ public class AddPlayerPanel extends JPanel
 	 * This constructor creates 3 labels as well as 3 textfields
 	 * for the user to insert information for a player they wish to add
 	 */
-	public AddPlayerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
+	public AddPlayerInnerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{	
 		this.frame = frame;
 		setLayout(new GridBagLayout());

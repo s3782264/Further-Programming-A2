@@ -7,18 +7,19 @@ import javax.swing.JOptionPane;
 
 import model.DicePairModel;
 import view.DiceFrame;
-import view.RemovePlayerPanel;
+import view.DiceStatus;
+import view.RemovePlayerPanelMain;
 
 public class RemovePlayerPanelListener implements ActionListener
 {
 	private DiceFrame frame;
-	private RemovePlayerPanel rp;
 	private DicePairModel model;
-	public RemovePlayerPanelListener(DicePairModel model, DiceFrame frame, RemovePlayerPanel rp)
+	private DiceStatus statusBar;
+	public RemovePlayerPanelListener(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
 		this.frame = frame;
-		this.rp = rp;
 		this.model = model;
+		this.statusBar = statusBar;
 	}
 	
 	/*
@@ -30,7 +31,7 @@ public class RemovePlayerPanelListener implements ActionListener
 	{	
 		if(!model.getAllPlayers().isEmpty())
 		{
-			frame.getSplitFrame().setTopComponent(rp);
+			frame.getSplitFrame().setTopComponent(new RemovePlayerPanelMain(model, frame, statusBar));
 			frame.updatePanel();
 			System.out.println("Enter the ID of the player you wish to remove");
 		}

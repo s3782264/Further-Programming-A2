@@ -21,6 +21,9 @@ public class SummaryPanel extends JPanel
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
 		add(new JLabel("Summary Panel"));
 		
+		/*
+		 * If players exist loop through and add them to the Summary panel
+		 */
 		if(!model.getAllPlayers().isEmpty())
 		{
 			for(Player player : model.getAllPlayers())

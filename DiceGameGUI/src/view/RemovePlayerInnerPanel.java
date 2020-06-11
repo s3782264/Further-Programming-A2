@@ -16,12 +16,12 @@ import model.DicePairModel;
 import model.interfaces.Player;
 
 @SuppressWarnings("serial")
-public class RemovePlayerPanel extends JPanel 
+public class RemovePlayerInnerPanel extends JPanel 
 {
 	private JTextField textField1; 
 	private AbstractButton b;
 	private DiceFrame frame;
-	public RemovePlayerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
+	public RemovePlayerInnerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
 		setLayout(new GridBagLayout());
 		this.frame = frame;
@@ -43,6 +43,9 @@ public class RemovePlayerPanel extends JPanel
 				 enterAction(model);
 			        if(model.getPlayer(textField1.getText()) == null)
 			        {
+			        	/*
+			        	 * Changes to the frames top panel and bottom panel
+			        	 */
 			        	frame.getSplitFrame().setTopComponent(new DiceDefaultPanel(model, frame, statusBar));
 			        	frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
 			    		frame.updatePanel();
@@ -54,7 +57,7 @@ public class RemovePlayerPanel extends JPanel
 	}
 	
 	/*
-	 * Removes a player 
+	 * Removes a player using the information passed into the textfield
 	 */
 	private void enterAction(DicePairModel model)
 	{

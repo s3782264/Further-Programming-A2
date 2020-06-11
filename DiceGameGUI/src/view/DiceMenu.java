@@ -69,24 +69,22 @@ public class DiceMenu extends JMenuBar
 		 */
 		addPlayer = new JMenuItem("Add Player");
 		addPlayer.setMnemonic(KeyEvent.VK_E);
-		AddPlayerPanel ap = new AddPlayerPanel(model, frame, statusBar);
 		player.add(addPlayer);
 		/*
 		 * Adds a listener to the addPlayer option
 		 */
-		addPlayer.addActionListener(new AddPlayerPanelListener(model, frame, ap));
+		addPlayer.addActionListener(new AddPlayerPanelListener(model, frame, statusBar));
 
 		/*
 		 * Creates a Remove Player option
 		 */
 		removePlayer = new JMenuItem("Remove Player");
 		removePlayer.setMnemonic(KeyEvent.VK_E);
-		RemovePlayerPanel rp = new RemovePlayerPanel(model, frame, statusBar);
 		player.add(removePlayer);
 		/*
 		 * Adds a listener to the remove player option
 		 */
-		removePlayer.addActionListener(new RemovePlayerPanelListener(model,frame, rp));
+		removePlayer.addActionListener(new RemovePlayerPanelListener(model,frame, statusBar));
 		add(player);
 		
 		/*

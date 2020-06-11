@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -97,7 +96,7 @@ public class DiceGamePanel extends JPanel
 					else
 					{
 						JOptionPane.showMessageDialog(frame, "Your player doesn't have a bet");
-						frame.getSplitFrame().setTopComponent(new PlaceBetPanel(model, frame, statusBar));
+						frame.getSplitFrame().setTopComponent(new PlaceBetInnerPanel(model, frame, statusBar));
 						frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
 						frame.updatePanel();
 					}

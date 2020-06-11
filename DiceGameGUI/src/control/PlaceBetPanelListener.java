@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import model.DicePairModel;
 import view.DiceFrame;
 import view.DiceStatus;
-import view.PlaceBetPanel;
+import view.PlaceBetPanelMain;
 
 public class PlaceBetPanelListener implements ActionListener
 {
@@ -29,11 +29,9 @@ public class PlaceBetPanelListener implements ActionListener
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		PlaceBetPanel pp = new PlaceBetPanel(model, frame, statusBar);
-
 		if(!model.getAllPlayers().isEmpty())
 		{
-			frame.getSplitFrame().setTopComponent(pp);
+			frame.getSplitFrame().setTopComponent(new PlaceBetPanelMain(model, frame, statusBar));
 			frame.updatePanel();
 			System.out.println("Select a player and place a bet for that player.");
 		}

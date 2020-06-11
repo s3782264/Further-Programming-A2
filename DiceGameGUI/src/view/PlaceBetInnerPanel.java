@@ -1,6 +1,6 @@
 package view;
 
-import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,36 +11,31 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+
 import model.DicePairModel;
 import model.interfaces.Player;
 
 @SuppressWarnings("serial")
-public class PlaceBetPanel extends JPanel 
+public class PlaceBetInnerPanel extends JPanel 
 {
 	private JTextField textField1; 
 	private AbstractButton b;
 	private DiceFrame frame;
 	
-	public PlaceBetPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
+	public PlaceBetInnerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
-		setLayout(new BorderLayout(20,120));
+		setLayout(new GridBagLayout());
 		this.frame = frame;
-		/*
-		 * Adds a Player toolbar to the panel
-		 */
-		add(new PlayerToolbar(model, frame, statusBar), BorderLayout.NORTH);
-		
-		add(statusBar, BorderLayout.SOUTH);
-		
+			
 		JLabel l = new JLabel("Enter the bet");
-		add(l, BorderLayout.WEST);
+		add(l);
 		textField1 = new JTextField("",20);
 		l.setLabelFor(textField1);
-		add(textField1, BorderLayout.CENTER);
+		add(textField1);
 		
 		ButtonGroup group = new ButtonGroup();
-		b = new JToggleButton("Submit Player");
-		add(b, BorderLayout.EAST);
+		b = new JToggleButton("Submit Bet");
+		add(b);
 		group.add(b);
 		b.addActionListener(new ActionListener() {
 			

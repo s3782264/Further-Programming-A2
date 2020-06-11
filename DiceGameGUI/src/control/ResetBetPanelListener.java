@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import model.DicePairModel;
 import view.DiceFrame;
 import view.DiceStatus;
-import view.ResetBetPanel;
+import view.ResetBetPanelMain;
 
 public class ResetBetPanelListener implements ActionListener
 {
@@ -27,12 +27,10 @@ public class ResetBetPanelListener implements ActionListener
 	 * to ResetBetPanel
 	 */
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		ResetBetPanel rs = new ResetBetPanel(model, frame, statusBar);
-		
+	public void actionPerformed(ActionEvent e) {		
 		if(!model.getAllPlayers().isEmpty())
 		{
-			frame.getSplitFrame().setTopComponent(rs);
+			frame.getSplitFrame().setTopComponent(new ResetBetPanelMain(model, frame, statusBar));
 			frame.updatePanel();
 			System.out.println("Select the player you wish to reset the bet of.");
 		}
