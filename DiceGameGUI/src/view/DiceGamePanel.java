@@ -51,7 +51,15 @@ public class DiceGamePanel extends JPanel
 			public void actionPerformed(ActionEvent e) {
 				if(model.getSelectedPlayer()!=null)
 				{
-					if(model.getSelectedPlayer().getBet()!=0)
+					int checkBet =0;
+					for(Player player : model.getAllPlayers())
+					{
+						if(player.getBet()!=0)
+						{
+							checkBet++;
+						}
+					}
+					if(checkBet == model.getAllPlayers().size())
 					{
 					new Thread()
 					{
@@ -96,10 +104,10 @@ public class DiceGamePanel extends JPanel
 					 */
 					else
 					{
-						JOptionPane.showMessageDialog(frame, "Your player doesn't have a bet");
-						frame.getSplitFrame().setTopComponent(new PlaceBetInnerPanel(model, frame, statusBar));
-						frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
+						JOptionPane.showMessageDialog(frame, "All Players must have a bet");
+						frame.getSplitFrame().setTopComponent(new PlaceBetPanelMain(model, frame, statusBar));
 						frame.updatePanel();
+						System.out.println("Select a player and place a bet for that player.");
 					}
 				}
 				/*

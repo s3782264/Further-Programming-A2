@@ -52,7 +52,6 @@ public class PlaceBetInnerPanel extends JPanel
 					{
 						if(player.getBet() < player.getPoints())
 						{
-							frame.getSplitFrame().setTopComponent(new DiceDefaultPanel(model, frame, statusBar));
 							frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
 							frame.updatePanel();
 							JOptionPane.showMessageDialog(frame, "Bet successfully added");

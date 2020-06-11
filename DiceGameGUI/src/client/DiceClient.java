@@ -26,8 +26,6 @@ public class DiceClient {
 				new DiceFrame(model);
 		 }
 		 });
-
-
 		gameEngine.addGameEngineCallback(new GameEngineCallbackGUI(model));
 
 	}
