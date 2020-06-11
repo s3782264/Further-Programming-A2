@@ -4,6 +4,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Collection;
 
+import model.interfaces.DicePair;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.DicePanel;
@@ -11,10 +12,9 @@ import view.DicePanel;
 public class DicePairModel
 {
 	private GameEngine gameEngine;
-	private DieModel dieFace1;
-	private DieModel dieFace2;
 	private Player rollingPlayer;
 	private DicePanel panel;
+	private DicePair result;
 	public static final String DICE_ONE = "Dice";
 	
 	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -85,26 +85,6 @@ public class DicePairModel
 	}
 	
 	//Setters and getters
-	public void setDieModel1(DieModel die)
-	{
-		dieFace1 = die;
-		this.pcs.firePropertyChange(DICE_ONE, dieFace1, die);
-	}
-	
-	public void setDieModel2(DieModel die)
-	{
-		dieFace2 = die;
-	}
-	
-	public DieModel getDie1()
-	{
-		return dieFace1;
-	}
-
-	public DieModel getDie2()
-	{
-		return dieFace2;
-	}
 	
 	public Collection<Player> getAllPlayers()
 	{
@@ -124,6 +104,16 @@ public class DicePairModel
 	public DicePanel getPanel()
 	{
 		return panel;
+	}
+	
+	public void setHouseResult(DicePair result)
+	{
+		this.result = result;
+	}
+	
+	public DicePair getHouseResult()
+	{
+		return result;
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {

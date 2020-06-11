@@ -90,7 +90,19 @@ public class DiceGamePanel extends JPanel
 								}
 								if(check == model.getAllPlayers().size())
 								{
+									JOptionPane.showMessageDialog(frame, "The House will now roll");
 									model.rollHouse();
+									for(Player player : model.getAllPlayers())
+									{
+										if(player.getResult().compareTo(model.getHouseResult()) ==1)
+										{
+											JOptionPane.showMessageDialog(frame, player.getPlayerName() + " won");
+										}
+										else if(player.getResult().compareTo(model.getHouseResult()) ==-1)
+										{
+											JOptionPane.showMessageDialog(frame, player.getPlayerName() + " lost");
+										}
+									}
 								}
 							}
 							b.setEnabled(true);

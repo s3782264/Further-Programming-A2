@@ -147,5 +147,7 @@ public class GameEngineCallbackGUI extends GameEngineCallbackImpl
 	public void houseResult(DicePair result, GameEngine gameEngine) 
 	{
 		super.houseResult(result, gameEngine);
+		
+		model.setHouseResult(result);
 	}
 }
