@@ -16,6 +16,8 @@ public class RemovePlayerPanelMain extends JPanel
 	{
 		setLayout(new BorderLayout());
 		
+		add(new PlayerToolbar(model, frame, statusBar), BorderLayout.NORTH);
+		
 		add(new RemovePlayerInnerPanel(model, frame, statusBar));
 		
 		add(statusBar, BorderLayout.SOUTH);

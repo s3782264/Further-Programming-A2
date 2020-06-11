@@ -9,61 +9,54 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import model.DicePairModel;
-import model.interfaces.Player;
 
 @SuppressWarnings("serial")
 public class RemovePlayerInnerPanel extends JPanel 
 {
-	private JTextField textField1; 
 	private AbstractButton b;
 	private DiceFrame frame;
 	public RemovePlayerInnerPanel(DicePairModel model, DiceFrame frame, DiceStatus statusBar)
 	{
 		setLayout(new GridBagLayout());
 		this.frame = frame;
-		JLabel l = new JLabel("Enter the ID of the Player you wish to remove", JLabel.HORIZONTAL);
+		JLabel l = new JLabel("Select the player you wish to remove. ", JLabel.HORIZONTAL);
 		add(l);
-		textField1 = new JTextField("",20);
-		textField1.setText("");
-		l.setLabelFor(textField1);
-		add(textField1);
-		
+	
 		ButtonGroup group = new ButtonGroup();
-		b = new JToggleButton("Submit Player");
+		b = new JToggleButton("Remove Player");
 		add(b);
 		group.add(b);
 		b.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				 enterAction(model);
-			        if(model.getPlayer(textField1.getText()) == null)
-			        {
-			        	/*
-			        	 * Changes to the frames top panel and bottom panel
-			        	 */
-			        	frame.getSplitFrame().setTopComponent(new DiceDefaultPanel(model, frame, statusBar));
-			        	frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
-			    		frame.updatePanel();
-			        	JOptionPane.showMessageDialog(frame, "Player sucessfully removed");
-			        }
+				enterAction(model);
 				
+				statusBar.changeStatus2(model.getAllPlayers().size());
+				statusBar.changeStatus3(null);
+				/*
+				 * Changes to the frames top panel and bottom panel
+				 */
+				frame.getSplitFrame().setTopComponent(new DiceDefaultPanel(model, frame, statusBar));
+				frame.getSplitFrame().setBottomComponent(new SummaryPanel(model, statusBar));
+				frame.updatePanel();
+				JOptionPane.showMessageDialog(frame, "Player sucessfully removed");
+
+
 			}
-	    });
+		});
 	}
-	
+
 	/*
-	 * Removes a player using the information passed into the textfield
+	 * Removes a player that has been selected 
 	 */
 	private void enterAction(DicePairModel model)
 	{
 		try {
-		Player p = model.getPlayer(textField1.getText());
-		model.removePlayer(p);
+		model.removePlayer(model.getSelectedPlayer());
 		}catch (NullPointerException e)
 		{
 			JOptionPane.showMessageDialog(frame, "Unable to remove Player");

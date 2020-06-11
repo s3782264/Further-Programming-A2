@@ -44,6 +44,7 @@ public class DiceGamePanel extends JPanel
 		 */
 		DicePanel panel = new DicePanel(model);
 		add(panel);
+		model.setPanel(panel);
 		b.addActionListener(new ActionListener() {
 
 			@Override

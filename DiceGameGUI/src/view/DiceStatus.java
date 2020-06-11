@@ -50,7 +50,14 @@ public class DiceStatus extends JPanel
 	 */
 	public void changeStatus3(Player player)
 	{
-		status3.setText("Player selected " + player.getPlayerName());
+		if(player!=null)
+		{
+			status3.setText("Player selected " + player.getPlayerName());
+		}
+		else
+		{
+			status3.setText("No player currently selected");
+		}
 	}
 	
 	/*

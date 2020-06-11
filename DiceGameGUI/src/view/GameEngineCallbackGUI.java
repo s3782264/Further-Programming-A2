@@ -1,9 +1,10 @@
 package view;
 
 
+import javax.swing.SwingUtilities;
+
 import model.DiceFace;
 import model.DicePairModel;
-import model.DieModel;
 import model.interfaces.DicePair;
 import model.interfaces.Die;
 import model.interfaces.GameEngine;
@@ -20,34 +21,69 @@ public class GameEngineCallbackGUI extends GameEngineCallbackImpl
 	public void playerDieUpdate(Player player, Die die, GameEngine gameEngine)
 	{
 		super.playerDieUpdate(player, die, gameEngine);
-		
-		switch(die.getValue()) 
+		SwingUtilities.invokeLater(new Runnable()
 		{
-		case 1:
-			model.setDieModel1(new DieModel(model, DiceFace.ONE));
-			break;
-		case 2:
-			model.setDieModel1(new DieModel(model, DiceFace.TWO));
-			break;
-		case 3:
-			model.setDieModel1(new DieModel(model, DiceFace.THREE));
-			break;
-		case 4:
-			model.setDieModel1(new DieModel(model, DiceFace.FOUR));
-			break;
-		case 5:
-			model.setDieModel1(new DieModel(model, DiceFace.FIVE));
-			break;
-		case 6:
-			model.setDieModel1(new DieModel(model, DiceFace.SIX));
-			break;
-		}
+			@Override
+			public void run()
+			{
+
+
+				if(die.getNumber()==1)
+				{
+					switch(die.getValue()) 
+					{
+					case 1:
+						model.getPanel().setLabel1(DiceFace.values()[0].getIcon());
+						break;
+					case 2:
+						model.getPanel().setLabel1(DiceFace.values()[1].getIcon());
+						break;
+					case 3:
+						model.getPanel().setLabel1(DiceFace.values()[2].getIcon());
+						break;
+					case 4:
+						model.getPanel().setLabel1(DiceFace.values()[3].getIcon());
+						break;
+					case 5:
+						model.getPanel().setLabel1(DiceFace.values()[4].getIcon());
+						break;
+					case 6:
+						model.getPanel().setLabel1(DiceFace.values()[5].getIcon());
+						break;
+					}
+				}
+				if(die.getNumber()==2)
+				{
+					switch(die.getValue()) 
+					{
+					case 1:
+						model.getPanel().setLabel2(DiceFace.values()[0].getIcon());
+						break;
+					case 2:
+						model.getPanel().setLabel2(DiceFace.values()[1].getIcon());
+						break;
+					case 3:
+						model.getPanel().setLabel2(DiceFace.values()[2].getIcon());
+						break;
+					case 4:
+						model.getPanel().setLabel2(DiceFace.values()[3].getIcon());
+						break;
+					case 5:
+						model.getPanel().setLabel2(DiceFace.values()[4].getIcon());
+						break;
+					case 6:
+						model.getPanel().setLabel2(DiceFace.values()[5].getIcon());
+						break;
+					}
+				}
+			}
+		});
 	}
-	
+
 	public void playerResult(Player player, DicePair result, GameEngine gameEngine)
 	{
 		super.playerResult(player, result, gameEngine);
-		
-		
+
+
 	}
 }

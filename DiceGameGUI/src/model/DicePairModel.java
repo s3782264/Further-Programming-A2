@@ -3,8 +3,10 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Collection;
+
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.DicePanel;
 
 public class DicePairModel
 {
@@ -12,6 +14,7 @@ public class DicePairModel
 	private DieModel dieFace1;
 	private DieModel dieFace2;
 	private Player rollingPlayer;
+	private DicePanel panel;
 	public static final String DICE_ONE = "Dice";
 	
 	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -111,6 +114,16 @@ public class DicePairModel
 	public Player getPlayer(String id)
 	{
 		return gameEngine.getPlayer(id);
+	}
+	
+	public void setPanel(DicePanel panel)
+	{
+		this.panel = panel;
+	}
+	
+	public DicePanel getPanel()
+	{
+		return panel;
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
